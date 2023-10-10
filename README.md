@@ -1,2 +1,3 @@
 # SpringProject
-스프링스프링부트마리아디비에이따블유에스레쓰고
+learning Spring with Spring boot, MariaDB
+And connecting with AWS
