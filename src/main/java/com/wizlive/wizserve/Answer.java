@@ -12,8 +12,8 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Answer
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ANSWER_ID")
     private Integer id;
 
     @Column(columnDefinition = "TEXT")

@@ -14,8 +14,8 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Question
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "QUESTION_ID")
     private Integer id;
 
     @Column(length = 200)
