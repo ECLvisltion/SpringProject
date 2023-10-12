@@ -1,4 +1,4 @@
-package com.wizlive.gradle.wizserve;
+package com.wizlive.wizserve;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
