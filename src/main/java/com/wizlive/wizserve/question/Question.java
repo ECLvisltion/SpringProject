@@ -1,7 +1,9 @@
-package com.wizlive.wizserve;
+package com.wizlive.wizserve.question;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+import com.wizlive.wizserve.answer.Answer;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
