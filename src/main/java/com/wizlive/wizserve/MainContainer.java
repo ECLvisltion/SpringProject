@@ -11,6 +11,12 @@ public class MainContainer
     @ResponseBody
     public String index()
     {
-        return "안녕";
+        return "wabe";
+    }
+
+    @GetMapping("/")
+    public String root()
+    {
+        return "redirect:/question/list";
     }
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question List</title>
+  </head>
+  <body>
+    <h1 th:text="${question.subject}"></h1>
+    <div th:text="${question.content}"></div>
+    
+    <h5 th:text="|${#lists.size(question.answerList)}개의 답변이 있습니다.|"></h5>
+    <div>
+        <ul>
+            <li th:each="answer : ${question.answerList}" th:text="${answer.content}"></li>
+        </ul>
+    </div>
+
+    <form th:action="@{|/answer/create/${question.id}|}" method="post">
+      <label for="content">답변 입력</label></br>
+      <textarea name="content" id="content" rows="15"></textarea>
+      <input type="submit" value="등록">
+    </form>
+  </body>
+</html>
+
+<style>
+  .hide
+  {
+    display: none;
+  }
+</style>

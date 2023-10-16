@@ -10,33 +10,25 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
 public class Answer
 {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ANSWER_ID")
     private Integer id;
 
+    @Setter
     @Column(columnDefinition = "TEXT")
     private String content;
 
+    @Setter
     private LocalDateTime createDate;
 
+    @Setter
     @ManyToOne
     private Question question;
-
-    
-    //#region Setter
-    public void setID(Integer i) { id = i; }
-    public void setContent(String s) { content = s; }
-    public void setCreateDate(LocalDateTime ldt) { createDate = ldt; }
-    public void setQuestion(Question q) { question = q; }
-    //#endregion
-    //#region Getter
-    public Integer getID() { return id; }
-    public String getContent() { return content; }
-    public LocalDateTime getCreateDate() { return createDate; }
-    public Question getQuestion() { return question; }
-    //#endregion
 }
