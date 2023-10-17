@@ -31,6 +31,7 @@ public class Question
     @Column(columnDefinition = "TEXT")
     private String content;
     
+    @Setter
     private LocalDateTime createDate;
 
     @Setter

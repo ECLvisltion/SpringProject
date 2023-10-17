@@ -11,7 +11,7 @@ public class MainContainer
     @ResponseBody
     public String index()
     {
-        return "wabe";
+        return "wabela";
     }
 
     @GetMapping("/")
