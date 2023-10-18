@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO" monitorInterval="5">
+  <!--공통 속성 설정 -->
+  <Properties>
+    <Property name="logFileName">logFile</Property>
+    <Property name="consoleLayout">[%d{yyyy-MM-dd HH:mm:ss}] [%-5p] [%c{1}:%L] - %m%n</Property>
+    <Property name="fileLayout">%d [%t] %-5level %c(%M:%L) - %m%n</Property>
+  </Properties>
+
+  <!-- Log Appender 설정 -->
+  <Appenders>
+    <Console name="Console_Appender" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{yyyy-MM-dd hh:mm:ss} %5p [%c] %m%n"/>
+    </Console>
+
+    <RollingFile name="LogFile_Appender" fileName="./logs/log4j2-logfile.log" filePattern="./logs/log4j2-logfile.log.%d{yyyy-MM-dd}"> 
+      <PatternLayout pattern="%d %5p [%c] %m%n" />
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+      </Policies>
+    </RollingFile>
+  </Appenders>
+    
+  <!-- OFF < FATAL < ERROR < WARN < INFO < DEBUG < TRACE < ALL -->
+  <!-- Log가 찍힐 대상 설정. -->
+  <Loggers>
+    <Root level="INFO" additivity="false">
+      <AppenderRef ref="Console_Appender"/>
+      <AppenderRef ref="LogFile_Appender"/>
+    </Root>
+
+    <Logger name="org.springframework" level="DEBUG" additivity="false">
+      <AppenderRef ref="Console_Appender" />
+      <AppenderRef ref="LogFile_Appender"/>
+    </Logger>
+
+    <Logger name="com.wizlive" level="INFO" additivity="false">
+      <AppenderRef ref="Console_Appender" />
+      <AppenderRef ref="LogFile_Appender"/>
+    </Logger>
+  </Loggers>
+</Configuration>

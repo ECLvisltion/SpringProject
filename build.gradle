@@ -6,7 +6,7 @@ plugins
 }
 
 group = 'com.wizlive'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 
 java
 {
@@ -15,6 +15,10 @@ java
 
 configurations
 {
+    all
+	{
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
 	compileOnly
 	{
 		extendsFrom annotationProcessor
@@ -43,6 +47,12 @@ dependencies
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '3.1.4'
 
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '3.1.4'
+
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-log4j2
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '3.1.4'
+
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools
     compileOnly group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '3.1.4'
 
@@ -52,6 +62,9 @@ dependencies
 	// https://mvnrepository.com/artifact/org.projectlombok/lombok
 	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.30'
 	annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.30'
+
+	// https://mvnrepository.com/artifact/com.github.ulisesbocchio/jasypt-spring-boot-starter
+	implementation group: 'com.github.ulisesbocchio', name: 'jasypt-spring-boot-starter', version: '3.0.5'
 }
 
 tasks.named('test')
