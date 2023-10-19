@@ -1,3 +1,2 @@
 # SpringProject
-learning Spring with Spring boot, MariaDB
-And connecting with AWS
+Learning Spring with Spring boot, MariaDB, Vue.js, Typescript, AWS
