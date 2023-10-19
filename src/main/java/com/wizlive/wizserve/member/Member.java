@@ -2,6 +2,8 @@ package com.wizlive.wizserve.member;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,27 +12,30 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
 @Entity
 public class Member
 {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Column(name = "MEMBER_ID")
+    @Column(name = "member_id", columnDefinition = "int unsigned")
     private Integer id;
     
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter @Getter
-    @Column(length = 64)
+    @Column(nullable = false)
+    @ColumnDefault("false")
+    private Boolean admin;
+
+    @Column(nullable = false)
+    private LocalDateTime createDate;
+
+    @Setter
+    @Column(columnDefinition = "text", unique = true, nullable = false)
     private String email;
 
     @Setter
-    private String password;
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Column(length = 24)
+    @Column(length = 32, nullable = false)
     private String nickname;
-    
-    @Setter @Getter
-    private LocalDateTime createDate;
+
+    @Setter
+    @Column(columnDefinition = "text", nullable = false)
+    private String password;
 }

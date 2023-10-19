@@ -29,7 +29,7 @@
       <AppenderRef ref="LogFile_Appender"/>
     </Root>
 
-    <Logger name="org.springframework" level="DEBUG" additivity="false">
+    <Logger name="org.springframework" level="INFO" additivity="false">
       <AppenderRef ref="Console_Appender" />
       <AppenderRef ref="LogFile_Appender"/>
     </Logger>
