@@ -1,11 +1,14 @@
-module.exports =
+import { ProjectOptions } from "@vue/cli-service"
+
+export const config: ProjectOptions =
 {
+  publicPath: process.env.BASE_URL || "/",
   outputDir: "../src/main/resources/static",
   indexPath: "index.html",
   devServer:
   {
     port: 8081,
-    proxy: "http://localhost:8080"
+    proxy: "http://localhost:8081"
   },
   chainWebpack: (config) =>
   {

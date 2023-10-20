@@ -2,9 +2,9 @@ package com.wizlive.wizserve.member;
 
 import java.util.Optional;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.wizlive.wizserve.SecurityConfiguration;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,6 @@ import lombok.RequiredArgsConstructor;
 public class MemberService
 {
     private final MemberRepository memberRepository;
-    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     // 이메일 중복체크
     public boolean checkEmailDuplicate(String email)
@@ -26,7 +25,7 @@ public class MemberService
     // 회원가입
     public void signUp(MemberSignUp msu)
     {
-        memberRepository.save(msu.toEntity(passwordEncoder.encode(msu.getPassword())));
+        memberRepository.save(msu.toEntity(SecurityConfiguration.passwordEncoder().encode(msu.getPassword())));
     }
 
     // 로그인
@@ -38,7 +37,7 @@ public class MemberService
 
         Member member = optionalMember.get();
 
-        if (!passwordEncoder.matches(msi.getPassword(), member.getPassword())) { return null; }
+        if (!SecurityConfiguration.passwordEncoder().matches(msi.getPassword(), member.getPassword())) { return null; }
 
         return member;
     }
